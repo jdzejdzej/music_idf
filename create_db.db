@@ -1,0 +1,22 @@
+DROP DATABASE IF EXISTS music;
+DROP USER IF EXISTS music_idf;
+
+	
+CREATE ROLE music_idf LOGIN
+  ENCRYPTED PASSWORD 'music'
+  SUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;
+
+CREATE DATABASE music
+  WITH OWNER = music_idf;
+\connect music
+
+CREATE TABLE songs (
+  id serial PRIMARY KEY,
+  name text NOT NULL,
+  artist text NOT NULL);
+
+CREATE TABLE hashes (
+  id serial PRIMARY KEY,
+  song_id int REFERENCES songs,
+  time float NOT NULL,
+  hash int NOT NULL)
