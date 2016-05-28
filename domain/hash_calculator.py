@@ -8,8 +8,8 @@ class HashCalculator(object):
         self.fuzz = 2
 
     def from_bytes(self, _bytes):
-        numpy_array = fromstring(_bytes, dtype=int16)
-        frequencies = abs(fft.rfft(numpy_array))
+        time_samples = fromstring(_bytes, dtype=int16)
+        frequencies = abs(fft.rfft(time_samples))
         if frequencies.size < 181:
             return None
         bins = self.get_bins(frequencies)
