@@ -69,4 +69,4 @@ class Identifier(object):
 
                 if not handled:
                     chunk_chains.setdefault(new_hash.song_id, []).append([new_hash.song_id, t, new_hash.time, 1])
-    # def check_timing(self, hash_time, song_time):
+        print 'dont know'
